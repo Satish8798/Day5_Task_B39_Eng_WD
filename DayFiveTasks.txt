@@ -1,0 +1,348 @@
+
+//Day5
+
+//Task1
+//using anonymous and IIFE function
+
+//a. Print odd numbers in an array
+
+ let arr=[22,31,24,102,111,7,91,122,567,3,98];    //array with even and odd numbers
+(function(array){   //anonymous function
+    array.forEach((item)=>{ //using for each loop
+        if(item%2!==0)  //logic for odd numbers
+        console.log(item);  //printing odd numbers 
+    })
+})(arr);    //IIFE 
+
+//---------------------------**************************---------------------------
+/*
+//output:
+31
+111
+7
+91
+567
+3
+ */
+
+//b. Convert all the strings to title caps in a string array
+
+let arr=['guvi','zenclass','mern stack','full stack developer','web development'];//string array
+(function(array){ //anonymous function
+    for(let key in array){  //for...in loop
+        array[key]=array[key].toUpperCase();    //logic
+    }
+    console.log(array); //printing all strings in uppercase in array
+})(arr);    //IIFE
+
+//----------------------------******************-----------------------------
+/*
+//output:
+[
+    'GUVI',
+    'ZENCLASS',
+    'MERN STACK',
+    'FULL STACK DEVELOPER',
+    'WEB DEVELOPMENT'
+]
+*/
+
+//c. Sum of all numbers in an array
+
+let arr=[8,7,98,22,4,96,22,8,16];    //integer array
+(function(array){   //anonymous function
+    let sum=0;  //declaring sum variable
+    array.forEach((item)=>{ //for each loop
+        sum=sum+item; //logic
+    })
+    console.log(sum); //printing sum of all numbers in an array
+})(arr);    //IIFE
+
+//-----------------------------***********************---------------------------
+/*
+//output:
+281
+*/
+
+//d. Return all the prime numbers in an array
+
+let arr=[2,5,4,8,7,53,55,88,102,103]; //array of random numbers
+let prime=function(array){  //anonymous function
+    var solArr=[];  //decalaring a array to store prime numbers
+    let k=0;    //index variable
+    for(let key of array){  //for...of loop
+    let flag=0; //declaring flag variable tp identify prime numbers
+        for(let i=2;i<=key/2;i++){  //traditional for loop to iterate over numbers
+            if(key%i===0){ //logic starts
+                flag=1;
+                break;
+            }
+        }
+        if(flag===0){
+            solArr[k]=key;
+            k++;
+        }   //logic ends
+    }
+    return solArr; //returning array of prime numbers
+};console.log(prime(arr)); // printing array of prime numbers and IIFE 
+
+//-------------------------********************-----------------------
+/*
+//output:
+[ 2, 5, 7, 53, 103 ]
+*/
+
+//e. return all the palindromes in an array
+
+let arr=[121,223,95359,12,'sasas','sa','sub','3333','MERN Stack','s r s']   //array with some string and integer palindromes
+let palindrome=function(array){ //anonymous function
+    let solArr=[];  //declaring an array to store palindrome
+    k=0;    //index variable
+    for(let key of array){  //for...of loop
+
+        //logic starts for integer values in array
+        if(typeof(key)==typeof(1)){
+            let num=key;
+            let reverse=0;
+            while(num!==0){
+                let rem=num%10;
+                reverse=reverse*10+rem;
+                num=parseInt(num/10);
+            }
+            if(reverse===key){
+                solArr[k]=key;
+                k++;
+            }//logics ends
+
+            //logic starts for string values in array
+        }else{
+            let reverse='';
+            for(let i=key.length-1;i>=0;i--){ //traditional for loop to iterate over string
+                reverse=reverse+key[i];
+            }
+            if(reverse===key){
+                solArr[k]=key;
+                k++;
+            }
+        }
+    }
+    return solArr;  //returning the array with palindromes
+};console.log(palindrome(arr)); //printing array of palindromes and IIFE
+
+//-------------------------***************************---------------------
+/* 
+//output:
+[ 121, 95359, 'sasas', '3333', 's r s' ]
+ */
+
+//f.return median of two sorted arrays of same size
+
+let array1=[10,25,64,66,77]; //first sorted array
+let array2=[12,22,33,76,99]; //second sorted array
+
+let median=function(a1,a2){ //anonymous function
+    let mergedArray=a1.concat(a2); //merged array
+    mergedArray=mergedArray.sort(); //sorting the merged array
+
+    //since both arrays are of same size, merged array length will be even
+    let first=(mergedArray.length/2)-1; //getting the index of first middle number
+    let second=first+1; //getting the index of second middle number
+    let median=(mergedArray[first]+mergedArray[second])/2; // calculating median
+    return median; // returning median
+};console.log(median(array1,array2)); // printing median of two sorted arrays and IIFE;
+
+//--------------------------**********************----------------------------
+/*
+//output:
+48.5
+*/
+
+//g.remove duplicates from an array
+
+let arr=[1,7,7,5,6,5,'guvi','MERN','guvi']; //an array with duplicate values
+(function(array){   //anonymous function
+    for(let i=0;i<array.length-1;i++){ // traditional for loop for iterating over array
+        //logic starts
+        let k=i+1;
+        while(k<=array.length-1){
+            if(array[i]===array[k]){
+                array.splice(k,1);
+            }
+            k++;
+        }
+        //logic ends
+    }
+    console.log(array); // printing the array without duplicates
+})(arr); // IIFE 
+
+//--------------------------*********************---------------------
+/*
+//output:
+[ 1, 7, 5, 6, 'guvi', 'MERN' ]
+*/
+
+//h.rotate an array k times
+
+let arr=['guvi',1,34,55,'MERN',23,'full stack']; //array
+let k=3; // number of times to rotate
+let i=0; //variable for looping k times
+(function(array){ //anonymous function
+
+    //while loop for rotating array k times
+    while(i<k){
+        let temp=array[0];
+        for(let j=1;j<array.length;j++){
+            array[j-1]=array[j];
+        }
+        array[array.length-1]=temp;
+        i++;
+    }
+    console.log(array); // printing array after rotating k times
+})(arr); //IIFE 
+
+//----------------------------**********************-------------------------------
+/*
+//output:
+[ 55, 'MERN', 23, 'full stack', 'guvi', 1, 34 ]
+*/
+
+//----------------------------------------------------------------------------------
+
+//Task3
+//Do the below programs in arrow functions
+
+//a. Print odd numbers in an array
+
+let arr=[22,31,24,102,111,7,91,122,567,3,98];    //array with even and odd numbers
+let oddNumbers=(array)=>{   //arrow function
+    array.forEach((item)=>{ //using for each loop
+        if(item%2!==0)  //logic for odd numbers
+        console.log(item);  //printing odd numbers 
+    })
+};
+oddNumbers(arr); 
+
+//---------------------------**************************---------------------------
+/*
+//output:
+31
+111
+7
+91
+567
+3
+ */
+
+//b. Convert all the strings to title caps in a string array
+
+let arr=['guvi','zenclass','mern stack','full stack developer','web development'];//string array
+let titleCaps=(array)=>{ //arrow function
+    for(let key in array){  //for...in loop
+        array[key]=array[key].toUpperCase();    //logic
+    }
+    console.log(array); //printing all strings in uppercase in array
+};
+titleCaps(arr); 
+
+//----------------------------******************-----------------------------
+/*
+//output:
+[
+    'GUVI',
+    'ZENCLASS',
+    'MERN STACK',
+    'FULL STACK DEVELOPER',
+    'WEB DEVELOPMENT'
+]
+*/
+
+//c. Sum of all numbers in an array
+
+let arr=[8,7,98,22,4,96,22,8,16];    //integer array
+let sumOfAll=(array)=>{   //arrow function
+    let sum=0;  //declaring sum variable
+    array.forEach((item)=>{ //for each loop
+        sum=sum+item; //logic
+    })
+    console.log(sum); //printing sum of all numbers in an array
+}
+sumOfAll(arr);
+
+//-----------------------------***********************---------------------------
+/*
+//output:
+281
+*/
+
+//d. Return all the prime numbers in an array
+
+let arr=[2,5,4,8,7,53,55,88,102,103]; //array of random numbers
+let prime=(array)=>{  //anonymous function
+    var solArr=[];  //decalaring a array to store prime numbers
+    let k=0;    //index variable
+    for(let key of array){  //for...of loop
+    let flag=0; //declaring flag variable tp identify prime numbers
+        for(let i=2;i<=key/2;i++){  //traditional for loop to iterate over numbers
+            if(key%i===0){ //logic starts
+                flag=1;
+                break;
+            }
+        }
+        if(flag===0){
+            solArr[k]=key;
+            k++;
+        }   //logic ends
+    }
+    return solArr; //returning array of prime numbers
+};
+console.log(prime(arr)); // printing array of prime numbers and IIFE 
+
+//-------------------------********************-----------------------
+/*
+//output:
+[ 2, 5, 7, 53, 103 ]
+*/
+
+//e. return all the palindromes in an array
+
+let arr=[121,223,95359,12,'sasas','sa','sub','3333','MERN Stack','s r s']   //array with some string and integer palindromes
+let palindrome=(array)=>{ //anonymous function
+    let solArr=[];  //declaring an array to store palindrome
+    k=0;    //index variable
+    for(let key of array){  //for...of loop
+
+        //logic starts for integer values in array
+        if(typeof(key)==typeof(1)){
+            let num=key;
+            let reverse=0;
+            while(num!==0){
+                let rem=num%10;
+                reverse=reverse*10+rem;
+                num=parseInt(num/10);
+            }
+            if(reverse===key){
+                solArr[k]=key;
+                k++;
+            }//logics ends
+
+            //logic starts for string values in array
+        }else{
+            let reverse='';
+            for(let i=key.length-1;i>=0;i--){ //traditional for loop to iterate over string
+                reverse=reverse+key[i];
+            }
+            if(reverse===key){
+                solArr[k]=key;
+                k++;
+            }
+        }
+    }
+    return solArr;  //returning the array with palindromes
+};
+console.log(palindrome(arr)); //printing array of palindromes and IIFE
+
+//-------------------------***************************---------------------
+/* 
+//output:
+[ 121, 95359, 'sasas', '3333', 's r s' ]
+ */
