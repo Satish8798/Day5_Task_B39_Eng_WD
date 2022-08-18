@@ -27,10 +27,10 @@
 
 //b. Convert all the strings to title caps in a string array
 
-let arr=['guvi','zenclass','mern stack','full stack developer','web development'];//string array
+let arr=['guvi','zenclass','mernstack','fullstack','web'];//string array
 (function(array){ //anonymous function
     for(let key in array){  //for...in loop
-        array[key]=array[key].toUpperCase();    //logic
+        array[key]=array[key][0].toUpperCase()+array[key].substr(1);    //logic
     }
     console.log(array); //printing all strings in uppercase in array
 })(arr);    //IIFE
@@ -38,13 +38,7 @@ let arr=['guvi','zenclass','mern stack','full stack developer','web development'
 //----------------------------******************-----------------------------
 /*
 //output:
-[
-    'GUVI',
-    'ZENCLASS',
-    'MERN STACK',
-    'FULL STACK DEVELOPER',
-    'WEB DEVELOPMENT'
-]
+[ 'Guvi', 'Zenclass', 'Mernstack', 'Fullstack', 'Web' ]
 */
 
 //c. Sum of all numbers in an array
@@ -235,25 +229,18 @@ oddNumbers(arr);
 
 //b. Convert all the strings to title caps in a string array
 
-let arr=['guvi','zenclass','mern stack','full stack developer','web development'];//string array
-let titleCaps=(array)=>{ //arrow function
+let arr=['guvi','zenclass','mernstack','fullstack','web'];//string array
+let titleCaps=(array)=>{ //anonymous function
     for(let key in array){  //for...in loop
-        array[key]=array[key].toUpperCase();    //logic
+        array[key]=array[key][0].toUpperCase()+array[key].substr(1);    //logic
     }
     console.log(array); //printing all strings in uppercase in array
-};
-titleCaps(arr); 
+};titleCaps(arr);    //IIFE
 
 //----------------------------******************-----------------------------
 /*
 //output:
-[
-    'GUVI',
-    'ZENCLASS',
-    'MERN STACK',
-    'FULL STACK DEVELOPER',
-    'WEB DEVELOPMENT'
-]
+[ 'Guvi', 'Zenclass', 'Mernstack', 'Fullstack', 'Web' ]
 */
 
 //c. Sum of all numbers in an array
