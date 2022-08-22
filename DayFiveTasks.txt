@@ -77,8 +77,8 @@ let prime=function(array){  //anonymous function
             k++;
         }   //logic ends
     }
-    return solArr; //returning array of prime numbers
-};console.log(prime(arr)); // printing array of prime numbers and IIFE 
+    console.log(solArr); //printing array of prime numbers
+};prime(arr); //  IIFE 
 
 //-------------------------********************-----------------------
 /*
@@ -120,8 +120,8 @@ let palindrome=function(array){ //anonymous function
             }
         }
     }
-    return solArr;  //returning the array with palindromes
-};console.log(palindrome(arr)); //printing array of palindromes and IIFE
+    console.log(solArr);  //printing the array with palindromes
+};palindrome(arr); // IIFE
 
 //-------------------------***************************---------------------
 /* 
